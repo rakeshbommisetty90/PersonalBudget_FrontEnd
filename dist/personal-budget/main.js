@@ -769,7 +769,7 @@ class DataService {
         const token = localStorage.getItem('accessToken');
         const body = JSON.stringify(username);
         const headers = { 'content-type': 'application/json', 'Authorization': `Bearer ${token}` };
-        this.DataObservable = this.http.get('http://angularbackendrakesh90.herokuapp.com/budget', { headers: headers, params: { userid: username } }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["shareReplay"])());
+        this.DataObservable = this.http.get('https://angularbackendrakesh90.herokuapp.com/budget', { headers: headers, params: { userid: username } }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["shareReplay"])());
         //this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers }).pipe(shareReplay());
         return this.DataObservable;
     }
@@ -778,14 +778,14 @@ class DataService {
         const headers = { 'content-type': 'application/json', 'Authorization': `Bearer ${token}` };
         const body = JSON.stringify(data);
         console.log(body);
-        return this.http.post('http://angularbackendrakesh90.herokuapp.com/budget', body, { 'headers': headers });
+        return this.http.post('https://angularbackendrakesh90.herokuapp.com/budget', body, { 'headers': headers });
         //return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
     }
     userSignUp(data) {
         const headers = { 'content-type': 'application/json' };
         const body = JSON.stringify(data);
         console.log(body);
-        return this.http.post('http://angularbackendrakesh90.herokuapp.com/users', body, { 'headers': headers });
+        return this.http.post('https://angularbackendrakesh90.herokuapp.com/users', body, { 'headers': headers });
     }
     invaliduser() {
         this.toastr.error("User does not exist. Please proceed to signup page", 'Error');
@@ -795,7 +795,7 @@ class DataService {
         const body = JSON.stringify(data);
         console.log(body);
         // return this.http.post('http://192.168.150.1:3000/auth',body,{'headers':headers}).subscribe((res:any)=>{
-        return this.http.post('http://angularbackendrakesh90.herokuapp.com/auth/', body, { 'headers': headers }).subscribe((res) => {
+        return this.http.post('https://angularbackendrakesh90.herokuapp.com/auth/', body, { 'headers': headers }).subscribe((res) => {
             console.log(res);
             this.userRecord['username'] = data.username;
             this.userRecord['password'] = data.password;
