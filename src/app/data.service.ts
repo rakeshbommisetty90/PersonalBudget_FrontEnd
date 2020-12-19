@@ -41,7 +41,7 @@ export class DataService {
         const token = localStorage.getItem('accessToken');
         const body=JSON.stringify(username);
         const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
-        this.DataObservable = this.http.get('http://192.168.150.1:3000/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
+        this.DataObservable = this.http.get('http://angularbackendrakesh90.herokuapp.com/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
         //this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers }).pipe(shareReplay());
         return this.DataObservable;
     }
@@ -51,7 +51,7 @@ export class DataService {
       const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
       const body=JSON.stringify(data);
       console.log(body)
-      return this.http.post('http://192.168.150.1:3000/budget',body,{'headers':headers});
+      return this.http.post('http://angularbackendrakesh90.herokuapp.com/budget',body,{'headers':headers});
       //return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
     }
 
@@ -60,7 +60,7 @@ export class DataService {
       const headers = {'content-type': 'application/json'};
       const body=JSON.stringify(data);
       console.log(body)
-      return this.http.post('http://192.168.150.1:3000/users',body,{'headers':headers});
+      return this.http.post('http://angularbackendrakesh90.herokuapp.com/users',body,{'headers':headers});
     }
 
     invaliduser(){
@@ -72,7 +72,7 @@ export class DataService {
       const body=JSON.stringify(data);
       console.log(body)
       // return this.http.post('http://192.168.150.1:3000/auth',body,{'headers':headers}).subscribe((res:any)=>{
-        return this.http.post('http://192.168.150.1:3000/auth/',body,{'headers':headers}).subscribe((res:any)=>{
+        return this.http.post('http://angularbackendrakesh90.herokuapp.com/auth/',body,{'headers':headers}).subscribe((res:any)=>{
         console.log(res);
         this.userRecord['username'] = data.username;
         this.userRecord['password'] = data.password;
@@ -155,47 +155,6 @@ export class DataService {
 
 
 
-    // Code for firebase integration
-  // constructor(public afs: AngularFirestore) {
-  //   // this.budgetCollection = afs.collection<BudgetSchema>('budgetData');
-  //   // this.budgetData = this.budgetCollection.valueChanges();
-  //   //this.budgetData = this.afs.collection('budgetData').valueChanges();
-  //   this.budgetCollection = this.afs.collection('budget');
-  //   this.budgetData = this.budgetCollection.valueChanges();
-
-  //   this.feedbackCollection = this.afs.collection('feedback');
-  //   this.feedbackData = this.feedbackCollection.valueChanges();
-
-  //   this.userCollection = this.afs.collection('users');
-  //   this.userData = this.userCollection.valueChanges();
-
-
-
-  // }
-
-  // getData(){
-  //   return this.budgetData;
-  // }
-
-  // getFeedbackData(){
-  //   return this.feedbackData;
-  // }
-
-  // getUserData(){
-  //   return this.userData;
-  // }
-
-  // createNewFeedBack(record){
-  //   return this.afs.collection('feedback').add(record);
-  // }
-
-  // createNewBudget(record){
-  //   return this.afs.collection('budget').add(record);
-  // }
-
-  // addNewUser(record){
-  //   return this.afs.collection('users').add(record);
-  // }
 
 
 
