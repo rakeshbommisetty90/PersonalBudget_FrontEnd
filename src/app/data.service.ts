@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { shareReplay, takeUntil } from 'rxjs/operators';
-import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection } from '@angular/fire/firestore';
-import { getLocaleDateFormat } from '@angular/common';
+// import { AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollection } from '@angular/fire/firestore';
+// import { getLocaleDateFormat } from '@angular/common';
 //import { Data } from '@angular/router';
 import { BudgetSchema } from '../app/models/budget';
 import { UserSchema } from './models/users';
@@ -41,7 +41,7 @@ export class DataService {
         const token = localStorage.getItem('accessToken');
         const body=JSON.stringify(username);
         const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
-        this.DataObservable = this.http.get('http://angularbackendrakesh90.herokuapp.com/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
+        this.DataObservable = this.http.get('https://angularbackendrakesh90.herokuapp.com/budget',{ headers: headers,params:{userid : username }}).pipe(shareReplay());
         //this.DataObservable = this.http.get('http://localhost:3000/budget',{ headers: headers }).pipe(shareReplay());
         return this.DataObservable;
     }
@@ -51,7 +51,7 @@ export class DataService {
       const headers = {'content-type': 'application/json','Authorization' : `Bearer ${token}`};
       const body=JSON.stringify(data);
       console.log(body)
-      return this.http.post('http://angularbackendrakesh90.herokuapp.com/budget',body,{'headers':headers});
+      return this.http.post('https://angularbackendrakesh90.herokuapp.com/budget',body,{'headers':headers});
       //return this.http.post('http://localhost:3000/budget',body,{'headers':headers});
     }
 
@@ -60,7 +60,7 @@ export class DataService {
       const headers = {'content-type': 'application/json'};
       const body=JSON.stringify(data);
       console.log(body)
-      return this.http.post('http://angularbackendrakesh90.herokuapp.com/users',body,{'headers':headers});
+      return this.http.post('https://angularbackendrakesh90.herokuapp.com/users',body,{'headers':headers});
     }
 
     invaliduser(){
@@ -72,7 +72,7 @@ export class DataService {
       const body=JSON.stringify(data);
       console.log(body)
       // return this.http.post('http://192.168.150.1:3000/auth',body,{'headers':headers}).subscribe((res:any)=>{
-        return this.http.post('http://angularbackendrakesh90.herokuapp.com/auth/',body,{'headers':headers}).subscribe((res:any)=>{
+        return this.http.post('https://angularbackendrakesh90.herokuapp.com/auth/',body,{'headers':headers}).subscribe((res:any)=>{
         console.log(res);
         this.userRecord['username'] = data.username;
         this.userRecord['password'] = data.password;
